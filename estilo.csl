@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl"
+       class="in-text"
+       version="1.0"
+       default-locale="en-US">
+
+  <info>
+    <title>Pediatric Research – Cecilia Mathó</title>
+    <id>http://csl.mendeley.com/styles/pediatric-research-cecilia</id>
+    <link href="http://www.zotero.org/styles/pediatric-research" rel="template"/>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <summary>All authors listed unless more than five, then first author et al.</summary>
+    <updated>2026-01-28T00:00:00+00:00</updated>
+  </info>
+
+  <!-- AUTHORS -->
+  <macro name="author">
+    <names variable="author" suffix=". ">
+      <name delimiter=", "
+            delimiter-precedes-last="always"
+            name-as-sort-order="all"
+            sort-separator=" "
+            et-al-min="6"
+            et-al-use-first="1"
+            initialize-with=""/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <!-- TITLE -->
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+
+  <!-- JOURNAL TITLE -->
+  <macro name="journal">
+    <text variable="container-title"
+          font-style="italic"
+          form="short"
+          strip-periods="true"
+          suffix=" "/>
+  </macro>
+
+  <!-- IN-TEXT CITATION -->
+  <citation collapse="citation-number">
+    <layout vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <!-- BIBLIOGRAPHY -->
+  <bibliography second-field-align="flush" line-spacing="2">
+    <layout>
+      <text variable="citation-number" suffix=". "/>
+      <text macro="author"/>
+      <text macro="title" suffix=". "/>
+
+      <choose>
+        <if type="article-journal article-magazine" match="any">
+          <text macro="journal"/>
+          <group suffix=". ">
+            <text variable="volume" font-weight="bold"/>
+            <text variable="page" prefix=":"/>
+          </group>
+        </if>
+
+        <else-if type="chapter paper-conference" match="any">
+          <group suffix=". ">
+            <text term="in" text-case="capitalize-first" suffix=": "/>
+            <names variable="editor"/>
+            <text variable="container-title"/>
+          </group>
+        </else-if>
+      </choose>
+
+      <date variable="issued" prefix="(" suffix=").">
+        <date-part name="year"/>
+      </date>
+    </layout>
+  </bibliography>
+
+</style>
